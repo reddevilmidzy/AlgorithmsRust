@@ -213,7 +213,7 @@ pub fn nth_fibonacci_number_modulo_m(n: i64, m: i64) -> i128 {
     let (length, pisano_sequence) = get_pisano_sequence_and_period(m);
 
     let remainder = n % length as i64;
-    pisano_sequence.get(remainder as usize).unwrap().to_owned()
+    pisano_sequence[remainder as usize].to_owned()
 }
 
 /// get_pisano_sequence_and_period(m) returns the Pisano Sequence and period for the specified integer m.
@@ -226,7 +226,7 @@ fn get_pisano_sequence_and_period(m: i64) -> (i128, Vec<i128>) {
     let mut pisano_sequence: Vec<i128> = vec![a, b];
 
     // Iterating through all the fib numbers to get the sequence
-    for _i in 0..(m * m) + 1 {
+    for _i in 0..=(m * m) {
         let c = (a + b) % m as i128;
 
         // adding number into the sequence
